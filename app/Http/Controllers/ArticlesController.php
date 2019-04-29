@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Corp\Repositories\PortfoliosRepository;
 use Corp\Repositories\ArticlesRepository;
 use Corp\Repositories\CommentsRepository;
+use Corp\Category;
 use Config;
 
 class ArticlesController extends SiteController
@@ -27,14 +28,14 @@ class ArticlesController extends SiteController
         $this->vars = "title";
 
     }
+    
 
-
-    public function index()
+    public function index($cat_alias = FALSE)
     {
 
     	$this->vars = array();
        	
-        $articles = $this->getArticles(); 
+        $articles = $this->getArticles($cat_alias); 
 
         $content = view(env('THEME').'.articles_content')->with('articles',$articles)->render();
 
@@ -48,6 +49,27 @@ class ArticlesController extends SiteController
 
     	return $this->renderOutput();
        	
+    }
+
+    public function show($alias = FALSE){
+
+        $this->vars = array();
+
+        $article = $this->a_rep->one($alias,['comments' => TRUE]);
+
+        dd($article);
+
+        $content = view(env('THEME').".one_article")->with('article',$article)->render();
+
+        $this->vars = array_add($this->vars,'content',$content);
+
+        $comments = $this->getComments();
+        $portfolios = $this->getPortfolios();
+           $this->contentRightBar = view(env('THEME').".articlesBar")->with(['comments' => $comments,'portfolios' => $portfolios])->render();
+
+        return $this->renderOutput();
+
+
     }
 
     public function getComments(){
@@ -72,10 +94,19 @@ class ArticlesController extends SiteController
 
     }
 
-    public function getArticles($alias = FALSE)
+    public function getArticles($cat_alias = FALSE)
     {
 
-        $articles = $this->a_rep->get(['id','art_title','art_alias','created_at','art_img','art_desc','user_id','category_id'],FALSE,TRUE);
+        $where = FALSE;
+
+        //Получим статьи по Категориям
+        if ($cat_alias) {
+            
+            $id = Category::select('id')->where('cat_alias',$cat_alias)->first()->id;
+            $where = ['category_id',$id];
+        }
+
+        $articles = $this->a_rep->get(['id','art_title','art_alias','created_at','art_img','art_desc','user_id','category_id'],FALSE,TRUE,$where);
 
 
         if ($articles) {
