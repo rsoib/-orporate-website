@@ -28,7 +28,7 @@
 				                		@foreach($comments as $comment)
 											<div class="the-post group">
 				                        		<div class="avatar">
-				                        			@set($hash, ($comment->com_email) ? md5($comment->com_email) : $commemt->user->email)
+				                        			@set($hash, ($comment->com_email) ? md5($comment->com_email) : $comment->user->email)
 				                            		<img alt="" src="https://www.gravatar.com/avatar/{{$hash}}?d=mm&s=55" class="avatar" />   
 				                        		</div>
 				                        		<span class="author"><strong><a href="#">{{ isset($comment->user) ? $comment->user->name : $comment->com_name }}</a></strong> in</span> 

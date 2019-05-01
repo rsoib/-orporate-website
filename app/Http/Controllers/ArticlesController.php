@@ -55,6 +55,7 @@ class ArticlesController extends SiteController
 
         $this->vars = array();
 
+        $select = FALSE;
         $article = $this->a_rep->one($alias,['comments' => TRUE]);
 
         dd($article);
