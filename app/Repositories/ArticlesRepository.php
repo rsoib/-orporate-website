@@ -21,7 +21,7 @@ class ArticlesRepository extends Repository {
 		{
 			$article->load('comments');
 
-			$article->comments->load->('user');
+			$article->comments->load('user');
 		}
 
 		return $article;

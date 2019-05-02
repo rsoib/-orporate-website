@@ -58,7 +58,10 @@ class ArticlesController extends SiteController
         $select = FALSE;
         $article = $this->a_rep->one($alias,['comments' => TRUE]);
 
-        dd($article);
+        if ($article) 
+        {
+            $article->art_img = json_decode($article->art_img);
+        }
 
         $content = view(env('THEME').".one_article")->with('article',$article)->render();
 
