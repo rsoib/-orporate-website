@@ -63,6 +63,8 @@
         <link rel='stylesheet' href="{{ asset(env('ASSETS')) }}/css/font-awesome.css" type='text/css' media='all' />
         
         <!-- JAVASCRIPTs -->
+        
+        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/comment-reply.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.quicksand.js"></script>
@@ -78,6 +80,9 @@
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/shortcodes.js"></script>
 		<script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.colorbox-min.js"></script> <!-- nav -->
 		<script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.tweetable.js"></script>
+        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/myscripts.js"></script>
+
+
 
     </head>
     <!-- END HEAD -->
@@ -125,7 +130,22 @@
                 <!-- START SLIDER -->
 						@yield('slider')
 				
-				<!-- START PRIMARY -->
+	                    <div class="wrap_result" style="
+                                                            background-color: #f0f2f0;
+                                                            border: 2px solid #2C8DB8;
+                                                            border-radius: 10px;
+                                                            padding: 20px;
+                                                            position: fixed;
+                                                            left: 35%;
+                                                            top: 45%;
+                                                            width: 300px;
+                                                            height: 80px;
+                                                            text-align: center;
+                                                            display: none;
+                                                            z-index: 5005;
+                                                            ">
+                        </div>
+    			<!-- START PRIMARY -->
 				<div id="primary" class="sidebar-{{ isset($bar) ? $bar: 'no' }}">
 				    <div class="inner group">
 				        <!-- START CONTENT -->

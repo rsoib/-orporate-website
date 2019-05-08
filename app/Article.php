@@ -10,7 +10,7 @@ class Article extends Model
 
     public function user(){
 
-    	return $this->belongsTo('Corp\User');
+    	return $this->belongsTo('Corp\User','user_id');
     }
 
 	 public function category(){
