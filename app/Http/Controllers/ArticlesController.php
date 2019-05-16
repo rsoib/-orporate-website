@@ -37,6 +37,18 @@ class ArticlesController extends SiteController
        	
         $articles = $this->getArticles($cat_alias); 
 
+        if ($cat_alias) {
+            $this->title = $cat_alias;
+            /*$this->meta_desc = 'Articles';
+            $this->keywords = 'Blog Articles';*/
+        }else{
+            $this->title = 'Articles';
+            $this->meta_desc = 'Articles';
+            $this->keywords = 'Blog Articles';
+        }
+
+        
+
         $content = view(env('THEME').'.articles_content')->with('articles',$articles)->render();
 
         $this->vars = array_add($this->vars,'content',$content);
@@ -62,6 +74,10 @@ class ArticlesController extends SiteController
         {
             $article->art_img = json_decode($article->art_img);
         }
+
+        $this->title = $article->art_title;
+        $this->meta_desc = $article->meta_desc;
+        $this->keywords = $article->keywords;
 
         //dd($article->comments->groupBy('parent_id'));
 
@@ -110,9 +126,11 @@ class ArticlesController extends SiteController
             
             $id = Category::select('id')->where('cat_alias',$cat_alias)->first()->id;
             $where = ['category_id',$id];
+
+            
         }
 
-        $articles = $this->a_rep->get(['id','art_title','art_alias','created_at','art_img','art_desc','user_id','category_id'],FALSE,TRUE,$where);
+        $articles = $this->a_rep->get(['id','art_title','art_alias','created_at','art_img','art_desc','user_id','category_id','keywords'],FALSE,TRUE,$where);
 
 
         if ($articles) {
