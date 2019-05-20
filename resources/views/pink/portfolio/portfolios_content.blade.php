@@ -22,13 +22,12 @@
 				                            <div class="work-skillsdate">
 				                                <p class="skills"><span class="label">Filter:</span> {{ $portfolio->filter['fil_title'] }}</p>
 				                           		<p class="workdate"><span class="label">Customer:</span>{{ $portfolio->port_customer }}</p>
-				                            </div>
-											
-											@if($portfolio->created_at)
+				            				@if($portfolio->created_at)
 												<p class="workdate"><span class="label">Year: </span>{{ $portfolio->created_at->format('Y') }}</p>
 											@endif
-
-				                            <a class="read-more" href="{{ route('portfolios.show',['alias'=>$portfolio->alias]) }}}">View Project</a>            
+				                            </div>
+							
+				                            <a class="read-more" href="{{ route('portfolios.show',['alias'=>$portfolio->alias]) }}">View Project</a>            
 				                        </div>
 				                        <div class="clear"></div>
 				                    </div>

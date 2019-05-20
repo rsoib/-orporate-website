@@ -4,6 +4,8 @@ namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Corp\Repositories\PortfoliosRepository;
+use Config;
+use Corp\Portfolio;
 
 class PortfolioController extends SiteController
 {
@@ -44,9 +46,11 @@ class PortfolioController extends SiteController
        	
     }
 
-    public function getPortfolios(){
 
-    	$portfolios = $this->p_rep->get('*',FALSE,TRUE);
+
+    public function getPortfolios($take = FALSE, $pagination = TRUE){
+
+    	$portfolios = $this->p_rep->get('*',$take,$pagination);
 
     	if ($portfolios) {
     		
@@ -54,5 +58,31 @@ class PortfolioController extends SiteController
     	}
 
     	return $portfolios;
+    }
+
+    public function show($alias){
+
+        $portfolio = Portfolio::where('alias',$alias)->first(); 
+
+        if ($portfolio && $portfolio->port_img) {
+            $portfolio->port_img = json_decode($portfolio->port_img);
+        }
+        $this->title = $portfolio->port_title;
+        /*$this->meta_desc = $article->meta_desc;
+        $this->keywords = $article->keywords;*/
+
+    
+
+        
+        $portfolios = $this->getPortfolios(Config::get('settings.other_portfolios'),FALSE);
+
+        $content = view(env('THEME').".portfolio.one_portfolio")->with(['portfolio'=>$portfolio,'portfolios'=>$portfolios])->render();
+        $this->vars = array_add($this->vars,'content',$content);
+
+        /*$this->contentRightBar = view(env('THEME').".articlesBar")->with(['comments' => $comments,'portfolios' => $portfolios])->render();
+*/
+        return $this->renderOutput();
+
+
     }
 }
