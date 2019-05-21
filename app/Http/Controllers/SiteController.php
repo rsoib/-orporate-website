@@ -24,8 +24,8 @@ class SiteController extends Controller
     protected $template;
     protected $vars;
 
-    protected $contentRightBar=FAlSE;
-    protected $contentLeftBar=FAlSE;
+    protected $contentRightBar=FALSE;
+    protected $contentLeftBar=FALSE;
 
     protected $bar= 'no';
 
@@ -49,6 +49,13 @@ class SiteController extends Controller
             
             $rightBar = view(env('THEME').'.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
             $this->vars = array_add($this->vars,'rightBar', $rightBar);
+
+        }
+
+        if ($this->contentLeftBar) {
+            
+            $leftBar = view(env('THEME').'.leftBar')->with('contentLeftBar',$this->contentLeftBar)->render();
+            $this->vars = array_add($this->vars,'leftBar', $leftBar);
 
         }
 
