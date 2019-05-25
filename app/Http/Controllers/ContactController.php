@@ -15,6 +15,7 @@ class ContactController extends SiteController
         parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
 
         $this->bar ='left';
+        $this->title = "Контакты";
  
         $this->template = env('THEME').".contacts.contacts";
        

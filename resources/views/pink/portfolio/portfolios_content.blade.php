@@ -27,7 +27,7 @@
 											@endif
 				                            </div>
 							
-				                            <a class="read-more" href="{{ route('portfolios.show',['alias'=>$portfolio->alias]) }}">View Project</a>            
+				                            <a class="read-more" href="{{ route('portfolios.show',['alias'=>$portfolio->alias]) }}">{{ Lang::get('ru.view_project') }}</a>            
 				                        </div>
 				                        <div class="clear"></div>
 				                    </div>

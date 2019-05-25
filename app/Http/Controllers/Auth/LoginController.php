@@ -4,6 +4,8 @@ namespace Corp\Http\Controllers\Auth;
 
 use Corp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+
+
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -36,4 +41,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function username()
+    {
+        return 'login';
+    }
+
+     public function showLoginForm()
+    {
+        return view(env('THEME').'.auth.login')->with('title','Вход на сайт');
+    }
+
+   /*public function authenticate(Request $request)
+    {
+        $credentials = $request->only('login', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->intended('/');
+        }
+    }*/
 }
