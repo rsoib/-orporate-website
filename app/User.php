@@ -34,6 +34,27 @@ class User extends Authenticatable
         return $this->hasMany('Corp\Article');
     }
 
+    public function roles(){
+
+        return $this->belongsToMany('Corp\Role','role_user');
+    }
+
+    public function canDo($permission, $require = FALSE){
+        
+        if (is_array($permission)) {
+             dump($permission);
+        }else{
+            foreach ($this->roles as $role) {
+                 foreach ($role->perms as $perm) {
+                     if (str_is($permission,$perm->name)) {
+                         return TRUE;
+                     }
+                 }
+             }
+        } 
+        
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

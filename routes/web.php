@@ -43,9 +43,9 @@ Route::resource('comment','CommentController',['only'=>['store']]);
 Route::get('contacts/',['uses'=>'ContactController@index','as'=>'contacts']);
 Route::post('contacts/',['uses'=>'ContactController@store','as'=>'store']);
 
-Route::get('login','Auth\LoginController@showLoginForm');
+/*Route::get('login','Auth\LoginController@showLoginForm');
 Route::post('login','Auth\LoginController@login');
-Route::get('logout','Auth\LoginController@logout');
+Route::get('logout','Auth\LoginController@logout');*/
 
 Auth::routes();
 
