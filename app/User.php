@@ -42,7 +42,21 @@ class User extends Authenticatable
     public function canDo($permission, $require = FALSE){
         
         if (is_array($permission)) {
-             dump($permission);
+            
+            foreach ($permission as $permName) {
+                  
+                  $permName = $this->canDo($permName);
+                //Если один правил из массива будет совпадат
+                  if ($permName && !$require) {
+                        return TRUE; 
+                   }          
+                   elseif (!$permName && $require) {
+                       return FALSE;
+                   }
+            }    
+
+            return $require;
+
         }else{
             foreach ($this->roles as $role) {
                  foreach ($role->perms as $perm) {
@@ -53,6 +67,24 @@ class User extends Authenticatable
              }
         } 
         
+    }
+
+    public function hasRole($name, $require = FALSE){
+
+            if (is_array($name)) {
+                foreach ($name as $roleName) {
+                    
+                    $hasRole = $this->hasRole($roleName);
+
+                    if ($hasRole && !$require) {
+                        return TRUE;
+                    } elseif (!$hasRole && $require) {
+                        return FALSE;
+                    }
+                }
+
+                return $require;
+            }
     }
 
     /**
