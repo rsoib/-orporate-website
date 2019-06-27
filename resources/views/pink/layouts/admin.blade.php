@@ -58,6 +58,7 @@
         <link rel="stylesheet" id="buttons" href="{{ asset(env('ASSETS')) }}/css/buttons.css" type="text/css" media="all" />
         <link rel="stylesheet" id="cache-custom-css" href="{{ asset(env('ASSETS')) }}/css/cache-custom.css" type="text/css" media="all" />
         <link rel="stylesheet" id="custom-css" href="{{ asset(env('ASSETS')) }}/css/custom.css" type="text/css" media="all" />
+        <link rel="stylesheet" type="text/css" media="all" href="{{ asset(env('ASSETS')) }}/css/jquery-ui.css" />
 	    
         <!-- FONTs -->
         <link rel="stylesheet" id="google-fonts-css" href="http://fonts.googleapis.com/css?family=Oswald%7CDroid+Sans%7CPlayfair+Display%7COpen+Sans+Condensed%3A300%7CRokkitt%7CShadows+Into+Light%7CAbel%7CDamion%7CMontez&amp;ver=3.4.2" type="text/css" media="all" />
@@ -65,11 +66,9 @@
         
         <!-- JAVASCRIPTs -->
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.js"></script>
-        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/ckeditor.js"></script>
+        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/bootstrap-filestyle.js"></script>
-
-        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/comment-reply.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.quicksand.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.tipsy.js"></script>
@@ -133,8 +132,7 @@
                
     			<!-- START PRIMARY -->
                   
-				@if(count($errors) > 0)
-					
+				@if(count($errors) > 0 && (Route::currentRouteName() == 'articles.store'))
 					<div class="box error-box">
 						
 						@foreach($errors->all as $error)
@@ -142,7 +140,6 @@
 							<p>{{ $error }}</p>
 						@endforeach
 					</div>
-	
 				@endif
 
 				@if(session('status'))

@@ -8,6 +8,7 @@ class Article extends Model
 {
     //  
 
+    protected $fillable = ['art_title','art_img','art_alias','art_text','art_desc','keywords','meta_desc','category_id','user_id'];
     
 
     public function user(){

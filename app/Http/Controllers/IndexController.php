@@ -60,7 +60,8 @@ class IndexController extends SiteController
         $this->vars = array_add($this->vars,'sliders',$sliders);
 
         $articles = $this->getArticles();
-
+        
+        
         $this->contentRightBar = view(env('THEME').".indexBar")->with('articles', $articles)->render();
 
         /* getHomePage */

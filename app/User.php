@@ -49,7 +49,8 @@ class User extends Authenticatable
                 //Если один правил из массива будет совпадат
                   if ($permName && !$require) {
                         return TRUE; 
-                   }          
+                   }
+                // Если ни один из правил нету          
                    elseif (!$permName && $require) {
                        return FALSE;
                    }
