@@ -92,14 +92,14 @@ class SiteController extends Controller
                     if($m->find($item->parent)){
 
                         $m->find($item->parent)->add($item->title, $item->path)->id($item->id);
+        
                      }
                 } 
             }
 
         });
 
-       //dd($mBuilder);
-        return $mBuilder;
+       return $mBuilder;
 
 
 

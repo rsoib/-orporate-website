@@ -7,7 +7,7 @@
             <p>{{ $error }}</p>
           @endforeach
           </div>
-      @endif
+      	@endif
 		
 		{!! Form::open(['url' => (isset($article->id)) ? route('articles.update',['articles'=>$article->art_alias]) : route('articles.store'), 'class'=>'contact-form','method'=>'POST','enctype'=>'multipart/form-data']) !!}	
 		<ul>

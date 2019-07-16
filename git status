@@ -1,0 +1,71 @@
+[33mcommit 675875a67ba8b450fb791033fbac9f69663ba7cb[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Thu Jun 27 21:07:07 2019 +0300
+
+    at the moment
+
+[33mcommit a7e98677fb1210565faa3d7b37f7e07ccdff027b[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Thu May 30 01:06:36 2019 +0300
+
+    write permission
+
+[33mcommit dcb0b3636727cf494361c4cf48299f311e381a0e[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Wed May 29 00:21:54 2019 +0300
+
+    authenticate
+
+[33mcommit 0ba83b09a5a51adea6ec27b4272453e9e877cad1[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Sat May 25 23:23:42 2019 +0300
+
+    create auth
+
+[33mcommit 44c7df758bae2d0949b93a7280ce70d2b2029828[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Tue May 21 21:25:28 2019 +0300
+
+    create a contact page
+
+[33mcommit 64b5ecbd0b81d6097bcdd1cf56e409482e9afe87[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Mon May 20 23:11:33 2019 +0300
+
+    show one portfolio
+
+[33mcommit cc51245198a2e3962f9431df7b4f3243391c9f2d[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Thu May 16 23:25:36 2019 +0300
+
+    Commemt andcreate portfoloi page
+
+[33mcommit cebe2f99715fc68b2d4f8f44280c6413de9ec8ce[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Thu May 9 00:55:44 2019 +0300
+
+    comments and ajax request
+
+[33mcommit c86b1f0fe8c5f9c92e6f3fdcc195c3fa81515a46[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Thu May 2 22:55:33 2019 +0300
+
+    show article in view
+
+[33mcommit 05ef2f356e9d38ace571891223971d9771fd31ea[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Wed May 1 21:28:07 2019 +0300
+
+    get one article
+
+[33mcommit 3a8ebdfe743f4f63056d5273350960b5f1e48e38[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Mon Apr 29 21:51:26 2019 +0300
+
+    create categoy for articles
+
+[33mcommit 2042e9e845a4e5eee540fa52e7279a440cf1c91a[m
+Author: Soib <r.soib1996@gmail.com>
+Date:   Thu Apr 25 21:21:33 2019 +0300
+
+    add all files

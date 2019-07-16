@@ -6,6 +6,14 @@
 
 <div id="content-page" class="content group">
 	<div class="hentry group">
+
+		@if(count($errors) > 0)
+          <div class="box error-box">
+           @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+          @endforeach
+          </div>
+      	@endif
 		
 		{!! Form::open(['url' => (isset($menu->id)) ? route('menus.update',['menus'=>$menu->id]) : route('menus.store'), 'class'=>'contact-form','method'=>'POST','enctype'=>'multipart/form-data']) !!}	
 
@@ -44,7 +52,7 @@
 		<div id="accordion">
 
 			<h3>
-				{!! Form::radio('type','customLink',(isset($type) && $type == 'blogLink') ? TRUE : '') !!}
+				{!! Form::radio('type','customLink',(isset($type) && $type == 'customLink') ? TRUE : FALSE) !!}
 				<span class="label">Пользовательская ссылка</span>	
 			</h3>
 
@@ -58,15 +66,15 @@
 
 				<div class="input-prepend">
 					<span class="add-on"><i class="icon-user"></i></span>
-					{!! Form::text('title',isset($menu->title) ? $menu->title : old('title'), ['placeholder' => 'Введите название пункта']) !!}
-					<!-- {!! Form::text('custom_link',isset($menu->path) ? $menu->path : old('title'), ['placeholder' => 'Введите название пункта'] ) !!} -->
+					
+					{!! Form::text('custom_link',isset($menu->path) ? $menu->path : old('title'), ['placeholder' => 'Введите название пункта'] ) !!} 
 				</div>
 			</li>
 				<div style="clear: both;"></div>
 			</ul>
 
 			<h3>
-				{!! Form::radio('type','customLink',(isset($type) && $type == 'blogLink') ? TRUE : '') !!}
+				{!! Form::radio('type','blogLink',(isset($type) && $type == 'blogLink') ? TRUE : FALSE) !!}
 				<span class="label">Раздель Блога</span></h3>
 
 				<ul>
@@ -80,7 +88,7 @@
 						<div class="input-prepend">
 
 							@if($categories)
-								{!! Form::select('category_alias',$categories,isset($category->cat_title) ? $category->cat_title : null) !!}
+								{!! Form::select('category_alias',$categories,(isset($option) && $option) ? $option : FALSE) !!}
 							@endif
 						</div>
 					</li>
@@ -93,7 +101,7 @@
 						</label>	
 
 						<div class="input-prepend">
-							{!! Form::select('article_alias',$articles) !!}
+							{!! Form::select('article_alias',$articles,(isset($option) && $option) ? $option : FALSE) !!}
 						</div>
 					</li>
 			</li>
@@ -102,7 +110,7 @@
 
 
 			<h3>
-				{!! Form::radio('type','customLink',(isset($type) && $type == 'blogLink') ? TRUE : '') !!}
+				{!! Form::radio('type','portLink',(isset($type) && $type == 'portLink') ? TRUE : FALSE) !!}
 				<span class="label">Раздель Портфолио</span>
 			</h3>
 
@@ -116,7 +124,7 @@
 
 						<div class="input-prepend">
 
-							{!! Form::select('portfolios_alias',$portfolios) !!}
+							{!! Form::select('portfolios_alias',$portfolios,(isset($option) && $option) ? $option : FALSE) !!}
 
 						</div>
 					</li>
@@ -158,10 +166,22 @@
 <script>
 	
 	jQuery(function($) {
-    	$("#accordion").accordion();
+    	$("#accordion").accordion({
 
-    		
+    		activate: function(e, obj) {
+    			obj.newPanel.prev().find('input[type=radio]').attr('checked','checked');
+    		}
 
+    	});
+
+    	var active = 0;
+    	$('#accordion input[type=radio]').each(function(ind,it){
+    		if ($(this).prop('checked')) {
+    			active = ind;
+    		}
+    	});
+
+    	$('#accordion').accordion('option','active', active);
   });
 </script>
 

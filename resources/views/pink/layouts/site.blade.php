@@ -65,6 +65,8 @@
         
         <!-- JAVASCRIPTs -->
         
+        
+        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/comment-reply.js"></script>
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.quicksand.js"></script>
@@ -80,6 +82,8 @@
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/shortcodes.js"></script>
 		<script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.colorbox-min.js"></script> <!-- nav -->
 		<script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.tweetable.js"></script>
+        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/myscripts.js"></script>
+        
 
 
 

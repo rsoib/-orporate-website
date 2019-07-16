@@ -16,7 +16,7 @@
 					@endif
 					
 				</table>
-				<a href="{{ route('articles.create') }}"><button class="btn btn-primary">Добавить</button></a>
+				<a href="{{ route('menus.create') }}"><button class="btn btn-primary">Добавить</button></a>
 			</div>
 		</div>	
 	</div>

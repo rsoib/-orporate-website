@@ -83,7 +83,7 @@
         <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/shortcodes.js"></script>
 		<script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.colorbox-min.js"></script> <!-- nav -->
 		<script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/jquery.tweetable.js"></script>
-        <script type="text/javascript" src="{{ asset(env('ASSETS')) }}/js/myscripts.js"></script>
+  
 
 
 
