@@ -118,7 +118,7 @@ class ArticlesController extends SiteController
 
     public function getArticles($cat_alias = FALSE)
     {
-
+        
         $where = FALSE;
 
         //Получим статьи по Категориям
